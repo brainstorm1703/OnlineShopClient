@@ -1,0 +1,30 @@
+<div>
+  <button class="product-button" routerLink="/order">order list</button>
+</div>
+<div *ngIf="isOrderItemDataLoaded" class="order-page">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Amount</th>
+      <th>Change Quantity</th>
+      <th>Delete</th>
+    </tr>
+    <ng-container *ngFor="let orderItem of orderItems; let i = index">
+      <tr>
+        <td>{{ orderItem.productID.name }}</td>
+        <td>{{ orderItem.productID.price }}</td>
+        <td>{{ orderItem.quantity }}</td>
+        <td>{{ orderItem.quantity * orderItem.productID.price | number: '1.2-2'}}</td>
+        <input type="number" [(ngModel)]="selectedQuantities[i]" (change)="updateQuantity(orderItem, i)" [max]="orderItem.productID.quantity">
+        <td>
+          <button class="order-button" (click)="deleteItemOrder(orderItem)">
+            delete item from order
+          </button>
+        </td>
+      </tr>
+
+    </ng-container>
+  </table>
+</div>

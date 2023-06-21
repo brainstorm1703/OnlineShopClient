@@ -1,0 +1,23 @@
+<div>
+  <h2>Edit Product</h2>
+  <form [formGroup]="productEditForm">
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Address</mat-label>
+      <input matInput formControlName="address">
+    </mat-form-field>
+
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Details</mat-label>
+      <input matInput formControlName="details">
+    </mat-form-field>
+    <div class="row">
+      <button (click)="closeDialog()" class="w-50"
+              mat-button mat-dialog-close disableRipple>
+        Cancel
+      </button>
+      <button color="primary" class="w-50" [disabled]="productEditForm.invalid" (click)="submit()" mat-button disableRipple>
+        Update
+      </button>
+    </div>
+  </form>
+</div>

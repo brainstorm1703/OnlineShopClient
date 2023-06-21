@@ -1,0 +1,42 @@
+.product-page {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+}
+
+table {
+  width: auto;
+  margin: 0 auto;
+  border-collapse: collapse; /* Объединение границ ячеек */
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border: 1px solid black; /* Границы ячеек */
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+button {
+  background-color: #030591;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #0408d6;
+}

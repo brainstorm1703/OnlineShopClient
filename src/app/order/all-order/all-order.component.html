@@ -1,0 +1,69 @@
+<div>
+  <button class="order-button" routerLink="/order/add">add order</button>
+</div>
+<div *ngIf="isOrderDataLoaded" class="order-page">
+  <table>
+    <tr>
+      <th>Address</th>
+      <th>Details</th>
+      <th>View Item In Order</th>
+      <th>Edit Order</th>
+      <th>Delete Order</th>
+      <th>Status Order</th>
+    </tr>
+    <ng-container *ngFor="let order of orders; let i = index">
+      <ng-container *ngIf="isAdmin; then allOrders else userSpecificOrders"></ng-container>
+      <ng-template #allOrders>
+        <tr>
+          <td>{{ order.orderAddress }}</td>
+          <td>{{ order.details }}</td>
+          <td>
+            <button class="order-button" [routerLink]="'/order/' + order.id">
+              view item
+            </button>
+          </td>
+          <td>
+            <button (click)="openEditDialog(i)"  class="order-button">
+              edit order
+            </button>
+          </td>
+          <td>
+            <button (click)="deleteOrder(order, i)" class="order-button">
+              delete order
+            </button>
+          </td>
+          <div>
+            <select [(ngModel)]="selectedStatus[i]" (change)="updateStatus(order, i)">
+              <option *ngFor="let option of statusOption" [value]="option">{{ option }}</option>
+            </select>
+          </div>
+
+        </tr>
+      </ng-template>
+
+      <ng-template #userSpecificOrders>
+        <tr *ngIf="order.userID.id === user.id">
+          <td>{{ order.orderAddress }}</td>
+          <td>{{ order.details }}</td>
+          <td>
+            <button class="order-button" [routerLink]="'/order/' + order.id">
+              view item
+            </button>
+          </td>
+          <td>
+            <button (click)="openEditDialog(i)"  class="order-button">
+              edit order
+            </button>
+          </td>
+          <td>
+            <button (click)="deleteOrder(order, i)" class="order-button">
+              delete order
+            </button>
+          </td>
+
+          <td>{{ order.status }}</td>
+        </tr>
+      </ng-template>
+    </ng-container>
+  </table>
+</div>

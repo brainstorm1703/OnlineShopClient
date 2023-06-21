@@ -1,0 +1,24 @@
+<div>
+  <button class="product-button" routerLink="/order">order list</button>
+  <h2>Create Order</h2>
+  <form [formGroup]="orderForm">
+
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Address</mat-label>
+      <input matInput
+             formControlName="address">
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Details</mat-label>
+      <input matInput
+             formControlName="details">
+    </mat-form-field>
+
+    <div style="text-align: right">
+      <button mat-flat-button color="primary" [disabled]="orderForm.invalid" (click)="submit()">
+        Create Product
+      </button>
+    </div>
+
+  </form>
+</div>

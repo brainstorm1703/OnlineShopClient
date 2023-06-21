@@ -1,0 +1,37 @@
+<div class="product-page">
+  <br>
+  <button class="product-button" routerLink="/product">product list</button>
+  <br>
+  <h2>Create Product</h2>
+  <br>
+  <form [formGroup]="productForm">
+
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput
+             formControlName="name">
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Price</mat-label>
+      <input matInput
+             formControlName="price">
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Quantity</mat-label>
+      <input matInput
+             formControlName="quantity">
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Description</mat-label>
+      <input matInput
+             formControlName="description">
+    </mat-form-field>
+
+    <div style="text-align: right">
+      <button mat-flat-button color="primary" [disabled]="productForm.invalid" (click)="submit()">
+        Create Product
+      </button>
+    </div>
+
+  </form>
+</div>

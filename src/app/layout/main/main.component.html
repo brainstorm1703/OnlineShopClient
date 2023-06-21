@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+  <span routerLink="/main" style="cursor: pointer;margin-left: 20px;">Online Shop</span>
+
+  <span class="spacer"></span>
+
+  <button (click)="products()" class="main-button">
+    products
+  </button>
+  <button (click)="orders()" class="main-button">
+    orders
+  </button>
+  <button *ngIf="isAdmin" (click)="users()" class="main-button">
+    users
+  </button>
+</mat-toolbar>

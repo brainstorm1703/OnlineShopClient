@@ -1,0 +1,35 @@
+<div>
+  <button class="product-button" routerLink="/product">product list</button>
+</div>
+<div *ngIf="isOrderDataLoaded && isProductDataLoaded" class="order-page">
+  <div>
+    <label for="name">name: </label>
+    <label id="name">{{product.name}}</label>
+    <br>
+    <label for="description">description: </label>
+    <label id="description">{{product.description}}</label>
+
+  </div>
+  <form [formGroup]="productForm">
+    <div>
+      <label for="quantity">quantity</label>
+      <input type="number" id="quantity" formControlName="quantity" required
+             [min]="1" [max]=product.quantity>
+      <div *ngIf="productForm.get('quantity')?.invalid && productForm.get('quantity')?.touched">
+        <p *ngIf="productForm.get('quantity')?.hasError('required')">Quantity is required</p>
+        <p *ngIf="productForm.get('quantity')?.hasError('pattern')">Quantity must be a number</p>
+        <p *ngIf="productForm.get('quantity')?.hasError('min')">Min Quantity: 1</p>
+        <p *ngIf="productForm.get('quantity')?.hasError('max')">Max Quantity: {{product.quantity}}</p>
+      </div>
+    </div>
+
+    <div>
+      <label for="order">order</label>
+      <select id="order" formControlName="order">
+        <option *ngFor="let option of statusOption" [value]="option">{{ option }}</option>
+      </select>
+    </div>
+    <button type="submit" [disabled]="productForm.invalid" (click)="submit(product.id)">Submit</button>
+  </form>
+
+</div>

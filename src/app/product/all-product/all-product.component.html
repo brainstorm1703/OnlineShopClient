@@ -1,0 +1,38 @@
+<br>
+<div *ngIf="isAdmin">
+  <button class="product-button" routerLink="/product/add">add product</button>
+</div>
+<div *ngIf="isProductDataLoaded" class="product-page">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Description</th>
+      <th>Add Product To Order</th>
+      <th *ngIf="isAdmin">Edit Product</th>
+      <th *ngIf="isAdmin">Delete Product</th>
+    </tr>
+    <tr *ngFor="let product of products; let i = index">
+      <td>{{ product.name }}</td>
+      <td>{{ product.price }}</td>
+      <td>{{ product.quantity }}</td>
+      <td>{{ product.description }}</td>
+      <td>
+        <button class="product-button" [routerLink]="'/product/' + product.id">
+          add product to order
+        </button>
+      </td>
+      <td *ngIf="isAdmin">
+        <button (click)="openEditDialog(i)" class="product-button">
+          edit product
+        </button>
+      </td>
+      <td *ngIf="isAdmin">
+        <button (click)="deleteProduct(product, i)" class="product-button">
+          delete product
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>

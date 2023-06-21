@@ -1,0 +1,23 @@
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+<body>
+  <div class="main-page">
+    <span class="spacer"></span>
+    <span routerLink="/main" style="cursor: pointer;margin-left: 20px;">Online Shop</span>
+    <button (click)="login()" class="main-button">
+      Login
+    </button>
+    <button (click)="register()" class="main-button">
+      Registration
+    </button>
+    <button (click)="logout()" class="main-button">
+      Logout
+    </button>
+    <br>
+    <a href="/main">main page</a>
+    <router-outlet>
+    </router-outlet>
+  </div>
+</body>
